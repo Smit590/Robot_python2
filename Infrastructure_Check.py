@@ -190,7 +190,7 @@ class Infrastructure_Check:
 			self.IP.write("CLI\n")
 			self.IP.write('show -d properties=NumberOfPSU,PowerBayNumber Rack1/PowerBay*\n')
 			self.IP.write("exit\n")
-			buf=self.IP.read_until('Exit the Session')
+			buf=self.IP.read_until('Exit the Session',20)
 			for line in buf.splitlines():
 				if 'NumberOfPSU = ' in line:
 					value = line.split("= ")[1]
